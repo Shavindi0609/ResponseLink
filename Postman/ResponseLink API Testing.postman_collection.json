@@ -1,0 +1,364 @@
+{
+  "info": {
+    "_postman_id": "47a90ae7-a779-41da-8de8-d3695a1be355",
+    "name": "ResponseLink API Testing",
+    "description": "StartFragmentAPI testing collection for ResponseLink Emergency Response Coordination System.EndFragment",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "46760741",
+    "_collection_link": "https://go.postman.co/collection/46760741-47a90ae7-a779-41da-8de8-d3695a1be355?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "ResponseLink API Testing",
+      "item": [
+        {
+          "name": "01 - Incidents",
+          "item": [
+            {
+              "name": "Create Incident",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"title\": \"Building Fire Emergency\",\r\n    \"description\": \"Fire reported in a residential building.\",\r\n    \"severity\": \"HIGH\",\r\n    \"incidentType\": \"FIRE\",\r\n    \"reporter\": \"John Silva\",\r\n    \"latitude\": 6.9271,\r\n    \"longitude\": 79.8612\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api/incidents",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "incidents"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get All Incidents",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/api/incidents",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "incidents"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get Incident By ID",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/api/incidents/{{incidentId}}",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "incidents",
+                    "{{incidentId}}"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Update Incident Status",
+              "request": {
+                "method": "PATCH",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"status\": \"RESOLVED\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api/incidents/{{incidentId}}/status",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "incidents",
+                    "{{incidentId}}",
+                    "status"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get Incident Audit",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/api/incidents/{{incidentId}}/audit",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "incidents",
+                    "{{incidentId}}",
+                    "audit"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "02 - Responders",
+          "item": [
+            {
+              "name": "Create Responder",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"Kasun Perera\",\r\n    \"email\": \"kasun@example.com\",\r\n    \"team\": \"Fire Rescue\",\r\n    \"active\": true\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api/responders",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "responders"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get All Responders",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/api/responders",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "responders"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "03 - Assignments",
+          "item": [
+            {
+              "name": "Assign Responders",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"responderId\": 1\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api/incidents/{{incidentId}}/responders",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "incidents",
+                    "{{incidentId}}",
+                    "responders"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Remove Responder",
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/api/incidents/{{incidentId}}/responders?responderId=1",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "incidents",
+                    "{{incidentId}}",
+                    "responders"
+                  ],
+                  "query": [
+                    {
+                      "key": "responderId",
+                      "value": "1"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "04 - Security Tests",
+          "item": [
+            {
+              "name": "Viewer Read Access",
+              "request": {
+                "auth": {
+                  "type": "basic",
+                  "basic": [
+                    {
+                      "key": "password",
+                      "value": "Viewer@123",
+                      "type": "string"
+                    },
+                    {
+                      "key": "username",
+                      "value": "viewer",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/api/incidents",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "incidents"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "New Request",
+              "request": {
+                "auth": {
+                  "type": "basic",
+                  "basic": [
+                    {
+                      "key": "password",
+                      "value": "Viewer@123",
+                      "type": "string"
+                    },
+                    {
+                      "key": "username",
+                      "value": "viewer",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"title\": \"Medical Emergency Near Bus Station\",\r\n    \"description\": \"An elderly person has collapsed near the main bus station and requires immediate medical attention.\",\r\n    \"severity\": \"HIGH\",\r\n    \"incidentType\": \"MEDICAL\",\r\n    \"reporter\": \"Saman Kumara\",\r\n    \"latitude\": 6.0329,\r\n    \"longitude\": 80.2168\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api/incidents",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "incidents"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "password",
+        "value": "Coordinator@123",
+        "type": "string"
+      },
+      {
+        "key": "username",
+        "value": "coordinator",
+        "type": "string"
+      }
+    ]
+  },
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ]
+}
